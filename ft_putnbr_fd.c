@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 22:05:09 by dcho              #+#    #+#             */
-/*   Updated: 2020/11/11 20:24:52 by dcho             ###   ########.fr       */
+/*   Updated: 2020/11/14 20:25:52 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static unsigned	ft_abs(int n)
 
 void			ft_putnbr_fd(int n, int fd)
 {
-	char		s[20];
+	char		s[12];
 	char		*ps;
 	unsigned	un;
 
-	ps = s + 19;
+	ps = s + 11;
 	*ps = 0;
 	un = ft_abs(n);
 	while (un)

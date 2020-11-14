@@ -67,3 +67,5 @@ $(NAME) : $(OBJS)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY : clean all fclean re

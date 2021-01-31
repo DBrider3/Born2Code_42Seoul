@@ -1,46 +1,79 @@
 #include "get_next_line.h"
 
-unsigned int		mylen(char *s1, char *s2)
+int		exception(int read_size, char *backup, char **line)
 {
-	unsigned int		len;
-
-	len = 0;
-	while (*s1++ != *s2)
-		len++;
-	return (len++);
+	if (read_size == -1)
+		return (-1);
+	else
+		*line = ft_strdup(backup);
+	free(backup);
+	return (0);
 }
 
-char			*ft_strncpy(char *dest, char *s, unsigned int n)
+char	*gnl_strjoin(char *backup, char *buf, int read_size)
 {
-	unsigned int	i;
+	char			*s;
+	size_t			backup_len;
+
+	backup_len = ft_strlen(backup);
+	if (!(s = malloc(sizeof(char) * (backup_len + read_size + 1))))
+		return (NULL);
+	ft_memset(s, 0, backup_len + read_size + 1);
+	ft_strlcat(s, backup, backup_len + 1);
+	ft_strlcat(s, buf, read_size + 1);
+	return (s);
+}
+
+int		newlinefind(char *backup)
+{
+	int		i;
 
 	i = 0;
-	while (i < n)
-		*(dest + i) = *(s + i);
-	*(dest + i) = 0;
-	return (dest);
+	while (*(backup + i))
+	{
+		if (*(backup + i) == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
 }
+
+
 
 int		get_next_line(int fd, char **line)
 {
-	int				res; // read() function return value
 	static char		*backup; // newline 만나고 나서 뒤에 문자열 저장
 	char			buf[BUFFER_SIZE + 1]; // read 하고 나서 저장할 공간
-	char			*find; // strchr로 저장할 곳
+	int				read_size;
+	char			*find;
 	int				len;
 
-	res = read(fd, buf, BUFFER_SIZE); // 멀라 일단 read 호출해서 buf에 때려 박음 담에 res에 eof 확인차 저장해뒀어.
-	if (res == 0) return (0); // EOF 시  return 0
+	backup == NULL;
+	while ((len = newlinefind(backup)) < 0)
+	{
+		read_size = read(fd, buf, BUFFER_SIZE);
+		if (read_size <= 0)
+			return (exception(read_size, backup, line));
+		backup = gnl_strjoin(backup, buf, read_size);
+	}
 
-	find = ft_strchr(buf, '\n'); // buf에서 newline 찾기
-	len = mylen(buf, find); // malloc과 strncpy를 위한 길이 구함
-	backup = find++; // find는 '\n'부터이니 그 다음 주소부터 backup에 저장
+	int i = 0;
+	line = malloc(sizeof(char) * len);
+	while (i < len)
+	{
+		*(line + i) = *(backup + i);
+		i++;
+	}
+	char *tmp;
 
-	*line = malloc(sizeof(char) * len); // line에 malloc
-	if (line == NULL) // malloc valid
-		return (-1);
-
-	*line = ft_strncpy(*line, buf, len); // line strncpy
-
+	tmp = ft_strdup(backup);
+	free(backup);
+	backup = malloc(sizeof(char) * (ft_strlen(backup) - len + 1));
+	i = 0;
+	while (i < len)
+		backup[i++] = tmp[len + i];
+	free(tmp);
+	// \n index 받아서 backup에 있는 것을 line에 넣기
+	// 그 다음 어떻게 참고해서 read 하는지..?
 	return (1);
 }

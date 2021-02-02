@@ -6,11 +6,11 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:15:42 by dcho              #+#    #+#             */
-/*   Updated: 2021/02/01 23:58:19 by dcho             ###   ########.fr       */
+/*   Updated: 2021/02/03 00:35:34 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {

@@ -18,5 +18,9 @@ int		main(void)
 	}
 	printf("[line_number : %d], [ret : %d], [line : %s]\n", ++line_number, ret, line);
 	free(line);
+	while (1)
+	{
+
+	}
 	return (0);
 }

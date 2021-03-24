@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 21:14:55 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/19 05:04:41 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/24 17:05:43 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		ft_option_init(t_options *options);
 void		ft_parse_all(const char **format, va_list ap, t_options *options);
 int			ft_isdigit(int c);
 unsigned	ft_abs(int n);
+size_t		ft_strlen(const char *s);
 
 size_t		ft_len_decimal(int num);
 size_t		ft_len_unsigend(unsigned int num, int base);
@@ -49,7 +50,10 @@ void		ft_get_padding(int len, t_options *options);
 int			ft_print_main(va_list ap, t_options *options);
 int			ft_print_logic_int(va_list ap, t_options *options);
 int			ft_print_logic_uint(va_list ap, t_options *options, int base);
-int			ft_print_logic_long(va_list ap, t_options *options, int base);
+int			ft_print_logic_long(va_list ap, t_options *options);
+int			ft_print_logic_char(va_list ap, t_options *options);
+int			ft_print_logic_string(va_list ap, t_options *options);
+int			ft_print_logic_percent(t_options *options);
 
 int			ft_print_space(int space);
 int			ft_print_sign(int sign);
@@ -58,5 +62,6 @@ int			ft_print_int(int n, char *base);
 int			ft_print_uint(unsigned int n, char *base);
 int			ft_print_long(unsigned long long n, char *base);
 
-size_t		ft_strlen(const char *s);
+
+
 #endif

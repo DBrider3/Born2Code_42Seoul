@@ -1,23 +1,45 @@
-CC = gcc
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/03/24 16:21:32 by dcho              #+#    #+#              #
+#    Updated: 2021/03/24 16:35:24 by dcho             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CFAGS = -Wall -Wextra -Werror
+AR = ar
+ARFLAGS = rcs
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
+NAME = libftprintf.a
 
 SRC_DIR = ./srcs
+SRCS = $(notdir $(wildcard $(SRC_DIR)/*.c))
 
 OBJ_DIR = ./objs
-
-TARGET = main
-
-# Make 할 소스 파일들
-# wildcard로 SRC_DIR에서 *.c로 된 파일들 목록을 뽑아낸 뒤에
-# notdir로 파일 이름만 뽑아낸다.
-# (e.g SRCS는 foo.c bar.c main.c 가 된다.)
-# SRCS = $(notdir $(wildcard $(SRC_DIR)/*.c))
-SRCS =	ft_printf.c	\
-		ft_printf_internal.c	\
-		ft_option_init.c		\
-		ft_parse_all.c			\
-		ft_printf_utils.c		\
-
 OBJS = $(SRCS:.c=.o)
+OBJECTS = $(patsubst %.o, $(OBJ_DIR)/%.o,$(OBJS))
+
+all : $(NAME)
+
+$(NAME) : $(OBJECTS)
+		$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
+
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
+		$(CC) $(CFLAGS) -o $@ -c $<
+
+clean :
+		rm -f $(OBJECTS)
+
+fclean : clean
+		rm -f $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re
 

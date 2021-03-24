@@ -6,7 +6,9 @@
 
 int		main(void)
 {
+	char *s = "string";
 	int num = 10;
 
-	printf("[%-5.2c]",'a');
+	// printf("[%8.11s]", s);
+	write(1, "%\n", 2);
 }

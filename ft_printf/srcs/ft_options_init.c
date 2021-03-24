@@ -6,11 +6,11 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 05:35:15 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/14 04:22:05 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/18 23:43:16 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void		ft_option_init(t_options *options)
 {
@@ -18,4 +18,8 @@ void		ft_option_init(t_options *options)
 	options->width = 1;
 	options->precision = 1;
 	options->type = 0;
+	options->sign = 1;
+	options->space = 0;
+	options->zero = 0;
+	options->jmp = 0;
 }

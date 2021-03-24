@@ -42,5 +42,7 @@ int		main(void)
 	printf("\nwidth : %d\nprecision : %d\n", width, precision);
 	if (num == (int)ft_abs(width)) printf("length == width\n");
 	else if (num == (int)ft_abs(precision)) printf("length == precision\n");
+
+	printf("%d\n", printf("[%p]\n", &width));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 21:14:55 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/15 17:15:52 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/19 05:04:41 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,35 @@ typedef struct	s_options{
 	int		width;
 	int		precision;
 	char	type;
+	int		sign;
+	int		space;
+	int		zero;
+	int		jmp;
 } t_options;
 
 int			ft_printf(const char *format, ...);
 int			ft_printf_internal(const char **format, va_list ap, t_options *options);
 void		ft_option_init(t_options *options);
-t_options	ft_parse_all(const char **format, va_list ap, t_options *options);
+void		ft_parse_all(const char **format, va_list ap, t_options *options);
 int			ft_isdigit(int c);
-size_t		ft_decimal_len(int num);
-size_t		ft_unsigend_len(unsigned int num, int base);
+unsigned	ft_abs(int n);
 
-int			ft_print_main(const char **format, va_list ap, t_options *options);
+size_t		ft_len_decimal(int num);
+size_t		ft_len_unsigend(unsigned int num, int base);
+size_t		ft_len_long(long long num, int base);
+void		ft_get_padding(int len, t_options *options);
 
+int			ft_print_main(va_list ap, t_options *options);
+int			ft_print_logic_int(va_list ap, t_options *options);
+int			ft_print_logic_uint(va_list ap, t_options *options, int base);
+int			ft_print_logic_long(va_list ap, t_options *options, int base);
+
+int			ft_print_space(int space);
+int			ft_print_sign(int sign);
+int			ft_print_zero(int zero);
+int			ft_print_int(int n, char *base);
+int			ft_print_uint(unsigned int n, char *base);
+int			ft_print_long(unsigned long long n, char *base);
+
+size_t		ft_strlen(const char *s);
 #endif

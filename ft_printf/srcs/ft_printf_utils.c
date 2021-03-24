@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/13 08:47:52 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/15 16:59:44 by dcho             ###   ########.fr       */
+/*   Created: 2021/03/18 20:54:40 by dcho              #+#    #+#             */
+/*   Updated: 2021/03/19 04:19:51 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int		ft_isdigit(int c)
 {
@@ -46,16 +46,17 @@ char	*ft_strdup(const char *s1)
 	return (res);
 }
 
-static unsigned	ft_abs(int n)
+unsigned	ft_abs(int n)
 {
 	return (n > 0 ? n : -n);
 }
 
-char			*ft_itoa(int n)
+void			ft_putnbr(int n)
 {
 	char		s[12];
 	char		*ps;
 	unsigned	un;
+	int			numlen;
 
 	ps = s + 11;
 	*ps = 0;
@@ -65,9 +66,8 @@ char			*ft_itoa(int n)
 		*--ps = un % 10 + '0';
 		un /= 10;
 	}
-	if (n < 0)
-		*--ps = '-';
-	else if (n == 0)
+	if (n == 0)
 		*--ps = '0';
-	return (ft_strdup(ps));
+	numlen = ft_strlen(ps);
+	write(1, ps, numlen);
 }

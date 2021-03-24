@@ -6,11 +6,11 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 07:32:29 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/14 03:46:28 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/19 04:15:57 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static int	parsing_flag(const char *format, t_options *options)
 {
@@ -104,20 +104,22 @@ static char	parsing_type(const char *format, int i)
 	else if (*(format + i) == 'u')
 		return ('u');
 	else if (*(format + i) == 'x')
-		return ('u');
+		return ('x');
 	else if (*(format + i) == 'X')
-		return ('u');
+		return ('X');
+	else if (*(format + i) == 'p')
+		return ('p');
 	else if (*(format + i) == 'c')
-		return ('u');
+		return ('c');
 	else if (*(format + i) == 's')
-		return ('u');
+		return ('s');
 	else if (*(format + i) == '%')
 		return ('%');
 	else
 		return (0);
 }
 
-t_options	ft_parse_all(const char **format, va_list ap, t_options *options)
+void	ft_parse_all(const char **format, va_list ap, t_options *options)
 {
 	int		index;
 
@@ -126,6 +128,7 @@ t_options	ft_parse_all(const char **format, va_list ap, t_options *options)
 	index = parsing_width(*format, ap, index, options);
 	index = parsing_prec(*format, ap, index, options);
 	options->type = parsing_type(*format, index);
-
-	return (*options);
+	if (options->type == 'p')
+		options->sign = 2;
+	options->jmp += (index + 1);
 }

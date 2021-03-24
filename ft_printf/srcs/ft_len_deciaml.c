@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_len_deciaml.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 21:14:55 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/10 21:16:20 by dcho             ###   ########.fr       */
+/*   Created: 2021/03/14 03:53:54 by dcho              #+#    #+#             */
+/*   Updated: 2021/03/18 20:44:27 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../includes/ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+size_t		ft_len_decimal(int num)
+{
+	size_t	len;
 
-
-#endif
+	len = 0;
+	if (num < 0)
+		len++;
+	if (num == 0)
+		return (1);
+	while (num != 0)
+	{
+		len++;
+		num /= 10;
+	}
+	return (len);
+}

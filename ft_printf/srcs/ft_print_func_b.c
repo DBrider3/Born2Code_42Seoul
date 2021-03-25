@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 15:37:24 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/24 15:37:40 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/25 22:14:01 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int		ft_print_space(int space)
 
 	i = 0;
 	while (i < space)
+	{
 		write(1, " ", 1);
-	return (space);
+		i++;
+	}
+	return (i);
 }
 
 int		ft_print_sign(int sign)
@@ -47,5 +50,5 @@ int		ft_print_zero(int zero)
 		write(1, "0", 1);
 		i++;
 	}
-	return (zero);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:56:02 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/24 17:04:11 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/25 21:28:02 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		ft_print_logic_string(va_list ap, t_options *options)
 	int		result;
 
 	result = 0;
+	if (options->precision == 0)
+		return (0);
 	str = va_arg(ap, char*);
 	len = ft_strlen(str);
 	ft_get_padding(len, options);

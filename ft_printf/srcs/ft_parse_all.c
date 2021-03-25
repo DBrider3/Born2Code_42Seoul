@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 07:32:29 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/19 04:15:57 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/25 23:12:27 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ static int	parsing_prec(const char *format, va_list ap, int i,
 
 	if (*(format + i) != '.')
 		return (i);
+	if (!(ft_isdigit(*(format + i + 1)) || *(format + i + 1) == '*'))
+	{
+		options->precision = 0;
+		return (++i);
+	}
 	if (options->flag == '0')
 		options->flag = 0;
 	if (*(format + ++i) == '*')
@@ -84,11 +89,13 @@ static int	parsing_prec(const char *format, va_list ap, int i,
 	else
 	{
 		insert = 0;
-		while (ft_isdigit(*(format + ++i)))
+		while (ft_isdigit(*(format + i)))
 		{
-			insert += (*(format + i - 1) - '0');
-			if (ft_isdigit(*(format + i)))
-				insert *= 10;
+			insert += (*(format + i) - '0');
+			if (!ft_isdigit(*(format + i + 1)))
+				break ;
+			insert *= 10;
+			i++;
 		}
 	}
 	options->precision = insert;

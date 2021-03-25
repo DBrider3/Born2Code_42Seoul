@@ -18,27 +18,28 @@ int main(void)
 {
     char c;
     char *s;
-    char *p;
+    // char *p;
     int d;
     int i;
-    unsigned int u;
+    // unsigned int u;
     unsigned int x;
     unsigned int X;
 
     int ret;
     int myret;
 
+    // p = &c;
     c = 'a';
     s = "this is string";
-    d = 2147483648;
+    d = (int)2147483648;
     i = -20;
-    u = 4294967296;
+    // u = 4294967295;
     x = 0xfF1;
     X = 0xfF1;
 
-    // ret = printf("org percent: %%\n");
+    // ret = printf("org percent: [%5d]\n",5);
     // printf("{ret: %d}\n", ret);
-    // myret = ft_printf("_my percent: %%\n");
+    // myret = ft_printf("_my percent: [%5d]\n",5);
     // printf("{myret: %d}\n", myret);
     // printf("\n");
 
@@ -54,11 +55,11 @@ int main(void)
     // printf("{myret: %d}\n", myret);
     // printf("\n");
 
-    ret = printf("org p: %p\n", p);
-    printf("{ret: %d}\n", ret);
-    myret = ft_printf("_my p: %p\n", p);
-    printf("{myret: %d}\n", myret);
-    printf("\n");
+    // ret = printf("org p: %p\n", p);
+    // printf("{ret: %d}\n", ret);
+    // myret = ft_printf("_my p: %p\n", p);
+    // printf("{myret: %d}\n", myret);
+    // printf("\n");
 
     ret = printf("org d: %d\n", d);
     printf("{ret: %d}\n", ret);
@@ -66,29 +67,29 @@ int main(void)
     printf("{myret: %d}\n", myret);
     printf("\n");
 
-    ret = printf("org i: %i\n", i);
-    printf("{ret: %d}\n", ret);
-    myret = ft_printf("_my i: %i\n", i);
-    printf("{myret: %d}\n", myret);
-    printf("\n");
+    // ret = printf("org i: %i\n", i);
+    // printf("{ret: %d}\n", ret);
+    // myret = ft_printf("_my i: %i\n", i);
+    // printf("{myret: %d}\n", myret);
+    // printf("\n");
 
-    ret = printf("org u: %u\n", u);
-    printf("{ret: %d}\n", ret);
-    myret = ft_printf("_my u: %u\n", u);
-    printf("{myret: %d}\n", myret);
-    printf("\n");
+    // ret = printf("org u: %u\n", u);
+    // printf("{ret: %d}\n", ret);
+    // myret = ft_printf("_my u: %u\n", u);
+    // printf("{myret: %d}\n", myret);
+    // printf("\n");
 
-    ret = printf("org x: %x\n", x);
-    printf("{ret: %d}\n", ret);
-    myret = ft_printf("_my x: %x\n", x);
-    printf("{myret: %d}\n", myret);
-    printf("\n");
+    // ret = printf("org x: %x\n", x);
+    // printf("{ret: %d}\n", ret);
+    // myret = ft_printf("_my x: %x\n", x);
+    // printf("{myret: %d}\n", myret);
+    // printf("\n");
 
-    ret = printf("org X: %X\n", X);
-    printf("{ret: %d}\n", ret);
-    myret = ft_printf("_my X: %X\n", X);
-    printf("{myret: %d}\n", myret);
-    printf("\n");
+    // ret = printf("org X: %X\n", X);
+    // printf("{ret: %d}\n", ret);
+    // myret = ft_printf("_my X: %X\n", X);
+    // printf("{myret: %d}\n", myret);
+    // printf("\n");
 
     return (0);
 }

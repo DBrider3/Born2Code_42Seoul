@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 20:54:40 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/24 16:16:42 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/25 20:36:10 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,22 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-unsigned	ft_abs(int n)
-{
-	return (n > 0 ? n : -n);
-}
-
 void			ft_putnbr(int n)
 {
 	char		s[12];
 	char		*ps;
-	unsigned	un;
 	int			numlen;
+	int			sign;
 
+	sign = 1;
 	ps = s + 11;
 	*ps = 0;
-	un = ft_abs(n);
-	while (un)
+	if (n < 0)
+		sign = -1;
+	while (n)
 	{
-		*--ps = un % 10 + '0';
-		un /= 10;
+		*--ps = (n % 10) * sign + '0';
+		n /= 10;
 	}
 	if (n == 0)
 		*--ps = '0';

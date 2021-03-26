@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 05:11:29 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/24 15:56:09 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/26 16:40:59 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		ft_printf(const char *format, ...)
 			write(1, format, i);
 			format += (++i);
 			count += ft_printf_internal(&format, ap, &options);
+			if (!(options.type))
+				return (ERORR);
 			format += options.jmp;
 			i = 0;
 			continue;

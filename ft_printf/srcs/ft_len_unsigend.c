@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 04:08:18 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/19 04:43:15 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/26 15:46:07 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ size_t		ft_len_unsigend(unsigned int num, int base)
 	return (len);
 }
 
-size_t		ft_len_long(long long num, int base)
+size_t		ft_len_long(ULL num, int base)
 {
 	size_t	len;
 
 	len = 0;
-	if (num < 0)
-		len++;
 	if (num == 0)
 		return (1);
 	while (num != 0)

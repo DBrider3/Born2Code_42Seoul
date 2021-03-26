@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 17:20:07 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/25 21:16:56 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/26 15:31:17 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,33 @@ void	ft_get_padding(int len, t_options *options)
 		options->zero = options->width - len - sign;
 	else
 	{
-		if (options->width >= len)
-			options->space = options->width - len - sign;
-		if (options->precision > len)
+		if (options->precision > len && ft_check_type(options->type))
 		{
-			if (options->type == 'd' || options->type == 'i' ||
-			options->type == 'u' || options->type == 'x'
-			|| options->type == 'X')
-				options->zero = options->precision - len - sign;
-			if (options->width > options->precision)
-				options->space = options->width - options->precision - len - sign;
+			options->zero = options->precision - len;
 		}
 		else if (options->precision <= len)
 		{
 			if (options->width > len)
 				options->space = options->width - len - sign;
 		}
+		if (options->width > options->precision)
+			options->space = options->width - len - options->zero - sign;
 	}
+}
+
+void	ft_get_padding_s(int len, t_options *options)
+{
+	if (options->precision < len && options->precision != -1)
+		len = options->precision;
+
+	if (options->width > len)
+		options->space = options->width - len;
+}
+
+int		ft_check_type(char type)
+{
+	if (type == 'd' || type == 'i' || type == 'u' || type == 'x'
+	|| type == 'X')
+		return (1);
+	return (0);
 }

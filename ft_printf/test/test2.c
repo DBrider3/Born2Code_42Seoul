@@ -9,5 +9,6 @@ int		main(void)
 	char *s = "string";
 	int num = 10;
 
-	printf("[%*.*d]", -2, 0 ,0);
+	// printf("[%2.s]", s);
+	printf("%d\n",printf("%.p",NULL));
 }

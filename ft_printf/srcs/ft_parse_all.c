@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 07:32:29 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/25 23:12:27 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/26 16:35:22 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,36 +69,28 @@ static int	parsing_width(const char *format, va_list ap, int i,
 static int	parsing_prec(const char *format, va_list ap, int i,
 						t_options *options)
 {
-	int		insert;
-
 	if (*(format + i) != '.')
 		return (i);
-	if (!(ft_isdigit(*(format + i + 1)) || *(format + i + 1) == '*'))
-	{
-		options->precision = 0;
-		return (++i);
-	}
-	if (options->flag == '0')
-		options->flag = 0;
 	if (*(format + ++i) == '*')
-	{
-		insert = va_arg(ap, int);
-		if (insert < 0)
-			insert = 1;
-	}
+		options->precision = va_arg(ap, int);
 	else
 	{
-		insert = 0;
+		options->precision = 0;
+		if (!ft_isdigit(*(format + i)))
+			return (i);
 		while (ft_isdigit(*(format + i)))
 		{
-			insert += (*(format + i) - '0');
+			options->precision += (*(format + i) - '0');
 			if (!ft_isdigit(*(format + i + 1)))
 				break ;
-			insert *= 10;
+			options->precision *= 10;
 			i++;
 		}
 	}
-	options->precision = insert;
+	if (options->precision < 0)
+		options->precision = -1;
+	else if (options->flag == '0')
+		options->flag = 0;
 	return (++i);
 }
 

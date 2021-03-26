@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 21:14:55 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/25 22:03:49 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/26 17:09:53 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ size_t		ft_strlen(const char *s);
 
 size_t		ft_len_decimal(LL num);
 size_t		ft_len_unsigend(unsigned int num, int base);
-size_t		ft_len_long(long long num, int base);
+size_t		ft_len_long(ULL num, int base);
 void		ft_get_padding(int len, t_options *options);
 
 int			ft_print_main(va_list ap, t_options *options);
@@ -61,9 +61,11 @@ int			ft_print_sign(int sign);
 int			ft_print_zero(int zero);
 int			ft_print_int(LL n, char *base, int prec);
 int			ft_print_uint(unsigned int n, char *base, int prec);
-int			ft_print_long(unsigned long long n, char *base);
+int			ft_print_long(ULL n, char *base, int prec);
 
 long long	ft_scale_finder_ll(LL n, int base_size);
 unsigned long long		ft_scale_finder_ull(ULL n, int base_size);
+int			ft_check_type(char type);
+void		ft_get_padding_s(int len, t_options *options);
 
 #endif

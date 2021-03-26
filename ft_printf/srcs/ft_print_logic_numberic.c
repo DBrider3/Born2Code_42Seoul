@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:20:19 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/25 23:06:44 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/26 17:13:59 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int		ft_print_logic_uint(va_list ap, t_options *options, int base)
 	num = va_arg(ap, unsigned int);
 	len = ft_len_unsigend(num, base);
 	ft_get_padding(len, options);
+	if (options->width > 0 && options->precision == 0 && num == 0)
+		options->space++;
 	if (options->flag != '-')
 		result += ft_print_space(options->space);
 	result += ft_print_zero(options->zero);
@@ -64,15 +66,20 @@ int		ft_print_logic_uint(va_list ap, t_options *options, int base)
 
 int		ft_print_logic_long(va_list ap, t_options *options)
 {
-	unsigned long long		num;
-	int						result;
+	ULL		num;
+	int		result;
+	int		len;
 
 	result = 0;
-	num = va_arg(ap, unsigned long long);
+	num = va_arg(ap, ULL);
+	len = ft_len_long(num, 16) + 2;
+	ft_get_padding(len, options);
+	if (options->width > 0 && options->precision == 0 && num == 0)
+		options->space++;
 	if (options->flag != '-')
 		result += ft_print_space(options->space);
 	result += ft_print_sign(options->sign);
-	result += ft_print_long(num, SHEX);
+	result += ft_print_long(num, SHEX, options->precision);
 	if (options->flag == '-')
 		result += ft_print_space(options->space);
 	return (result);

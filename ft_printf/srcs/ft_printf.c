@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 05:11:29 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/26 16:40:59 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/29 02:57:11 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,12 @@ int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	t_options	options;
-	int			count;
-	int			i;
+	int			result;
 
-	i = 0;
-	count = 0;
 	va_start(ap, format);
-	while (*(format + i))
-	{
-		if (*(format + i) == '%')
-		{
-			write(1, format, i);
-			format += (++i);
-			count += ft_printf_internal(&format, ap, &options);
-			if (!(options.type))
-				return (ERORR);
-			format += options.jmp;
-			i = 0;
-			continue;
-		}
-		count++;
-		i++;
-	}
-	write(1, format, i);
+	result = ft_printf_scan(&format, ap, &options);
+	if (result == ERORR)
+		return (ERORR);
 	va_end(ap);
-	return (count);
+	return (result);
 }

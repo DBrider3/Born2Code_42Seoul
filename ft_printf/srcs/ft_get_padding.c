@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 17:20:07 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/26 15:31:17 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/29 02:39:24 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_get_padding_s(int len, t_options *options)
 {
 	if (options->precision < len && options->precision != -1)
 		len = options->precision;
-
 	if (options->width > len)
 		options->space = options->width - len;
 }

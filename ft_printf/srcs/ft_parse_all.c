@@ -6,13 +6,13 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 07:32:29 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/26 16:35:22 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/29 01:55:13 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int	parsing_flag(const char *format, t_options *options)
+static int		parsing_flag(const char *format, t_options *options)
 {
 	int		i;
 	int		hyphen_flag;
@@ -36,7 +36,7 @@ static int	parsing_flag(const char *format, t_options *options)
 	return (i);
 }
 
-static int	parsing_width(const char *format, va_list ap, int i,
+static int		parsing_width(const char *format, va_list ap, int i,
 						t_options *options)
 {
 	int		insert;
@@ -66,7 +66,7 @@ static int	parsing_width(const char *format, va_list ap, int i,
 	return (i);
 }
 
-static int	parsing_prec(const char *format, va_list ap, int i,
+static int		parsing_prec(const char *format, va_list ap, int i,
 						t_options *options)
 {
 	if (*(format + i) != '.')
@@ -94,7 +94,7 @@ static int	parsing_prec(const char *format, va_list ap, int i,
 	return (++i);
 }
 
-static char	parsing_type(const char *format, int i)
+static char		parsing_type(const char *format, int i)
 {
 	if (*(format + i) == 'd')
 		return ('d');
@@ -118,7 +118,8 @@ static char	parsing_type(const char *format, int i)
 		return (0);
 }
 
-void	ft_parse_all(const char **format, va_list ap, t_options *options)
+void			ft_parse_all(const char **format, va_list ap, \
+				t_options *options)
 {
 	int		index;
 

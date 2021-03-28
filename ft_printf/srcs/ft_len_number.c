@@ -1,54 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_func_b.c                                  :+:      :+:    :+:   */
+/*   ft_len_number.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 15:37:24 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/25 22:14:01 by dcho             ###   ########.fr       */
+/*   Created: 2021/03/14 03:53:54 by dcho              #+#    #+#             */
+/*   Updated: 2021/03/29 02:30:13 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_print_space(int space)
+size_t		ft_len_number(t_ull num, char type)
 {
-	int		i;
+	size_t	len;
+	int		base;
 
-	i = 0;
-	while (i < space)
-	{
-		write(1, " ", 1);
-		i++;
-	}
-	return (i);
-}
-
-int		ft_print_sign(int sign)
-{
-	if (sign == 0)
-	{
-		write(1, "-", 1);
+	if (type == 'd' || type == 'i' || type == 'u')
+		base = 10;
+	else
+		base = 16;
+	len = 0;
+	if (num == 0)
 		return (1);
-	}
-	else if (sign == 2)
+	while (num != 0)
 	{
-		write(1, "0x", 2);
-		return (2);
+		len++;
+		num /= base;
 	}
-	return (0);
-}
-
-int		ft_print_zero(int zero)
-{
-	int		i;
-
-	i = 0;
-	while (i < zero)
-	{
-		write(1, "0", 1);
-		i++;
-	}
-	return (i);
+	return (len);
 }

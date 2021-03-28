@@ -50,11 +50,13 @@ int		main(void)
 	// printf(" --- Return : %d\n", ft_printf("%1.s, %1.s, %1.s, %1.s, %1.s", n, o, p, q, r)); //T223
 	// printf(" --- Return : %d\n", ft_printf("%*.*s, %*.*s, %*.*s, %*.*s, %*.*s, %*.*s, %*.*s, %*.*s", a, b, n, a, b, o, a, b, p, a, b, q, a, b, r, a, b, s, a, b, t, a, b, u));
 	// printf(" --- Return : %d\n", ft_printf("%c,  %-c, %1c, %*c,  %-*c,  %*c, %-*c", c, n[0], o[0], a, p[0], a, q[0], a, r[0], a, c));
-	printf(" --- Return : %d\n", printf("%09s", "hi low"));
-	printf(" --- Return : %d\n", ft_printf("%09s", "hi low"));
+	// printf(" --- Return : %d\n", printf("%09s", "hi low"));
+	// printf(" --- Return : %d\n", ft_printf("%09s", "hi low"));
 	// printf(" --- Return : %d\n", printf("%p%p%p%p%p%p%p%p%p%p%p%p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
 	// printf(" --- Return : %d\n", ft_printf("%p%p%p%p%p%p%p%p%p%p%p%p",&a01,&a02,&a03,&a04,&a05,&a06,&a07,&a08,&a09,&a10,&a11,&a12));
 
+	printf(" --- Return : %d\n", ft_printf("hello") + ft_printf("world"));
+	printf(" --- Return : %d\n", printf("hello") + printf("world"));
 	// printf("%");
 	return (0);
 }

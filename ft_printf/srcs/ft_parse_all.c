@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 07:32:29 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/29 01:55:13 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/30 17:56:10 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,6 @@ static int		parsing_prec(const char *format, va_list ap, int i,
 			i++;
 		}
 	}
-	if (options->precision < 0)
-		options->precision = -1;
-	else if (options->flag == '0')
-		options->flag = 0;
 	return (++i);
 }
 
@@ -128,7 +124,13 @@ void			ft_parse_all(const char **format, va_list ap, \
 	index = parsing_width(*format, ap, index, options);
 	index = parsing_prec(*format, ap, index, options);
 	options->type = parsing_type(*format, index);
-	if (options->type == 'p')
+	if (options->precision < 0)
+		options->precision = -1;
+	else if (options->flag == '0' && options->type != '%')
+		options->flag = 0;
+	if (options->type == '%')
+		options->precision = -1;
+	else if (options->type == 'p')
 		options->sign = 2;
 	options->jmp += (index + 1);
 }

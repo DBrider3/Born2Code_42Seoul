@@ -6,13 +6,39 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 17:02:07 by dcho              #+#    #+#             */
-/*   Updated: 2021/03/29 02:41:37 by dcho             ###   ########.fr       */
+/*   Updated: 2021/03/30 17:08:05 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int						ft_print_number(t_ull n, t_options options)
+static char					*ft_check_base(t_options options)
+{
+	char	*base;
+
+	if (options.type == 'd' || options.type == 'i' || options.type == 'u')
+		base = DEC;
+	else if (options.type == 'x' || options.type == 'p')
+		base = SHEX;
+	else
+		base = HEX;
+	return (base);
+}
+
+static unsigned long long	ft_scale_finder(t_ull n, int base_size)
+{
+	t_ull		scale;
+
+	scale = 1;
+	while (n >= (t_ull)base_size)
+	{
+		n /= base_size;
+		scale *= base_size;
+	}
+	return (scale);
+}
+
+int							ft_print_number(t_ull n, t_options options)
 {
 	t_ull	scale;
 	int		base_size;
@@ -35,30 +61,4 @@ int						ft_print_number(t_ull n, t_options options)
 		scale /= base_size;
 	}
 	return (result);
-}
-
-char					*ft_check_base(t_options options)
-{
-	char	*base;
-
-	if (options.type == 'd' || options.type == 'i' || options.type == 'u')
-		base = DEC;
-	else if (options.type == 'x' || options.type == 'p')
-		base = SHEX;
-	else
-		base = HEX;
-	return (base);
-}
-
-unsigned long long		ft_scale_finder(t_ull n, int base_size)
-{
-	t_ull		scale;
-
-	scale = 1;
-	while (n >= (t_ull)base_size)
-	{
-		n /= base_size;
-		scale *= base_size;
-	}
-	return (scale);
 }

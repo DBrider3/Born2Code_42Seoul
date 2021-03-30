@@ -3,41 +3,51 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+         #
+#    By: dcho <dcho@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/24 16:21:32 by dcho              #+#    #+#              #
-#    Updated: 2021/03/25 19:26:53 by dcho             ###   ########.fr        #
+#    Updated: 2021/03/29 18:44:16 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 AR = ar
 ARFLAGS = rcs
-
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
 
 NAME = libftprintf.a
 
 SRC_DIR = ./srcs
-SRCS = $(notdir $(wildcard $(SRC_DIR)/*.c))
+SRCS =	ft_printf.c \
+		ft_printf_internal.c \
+		ft_printf_utils.c \
+		ft_print_main.c \
+		ft_options_init.c \
+		ft_parse_all.c \
+		ft_print_logic_number.c \
+		ft_print_logic_etc.c \
+		ft_print_func_number.c \
+		ft_print_func_etc.c \
+		ft_len_number.c \
+		ft_get_padding.c \
 
 OBJ_DIR = ./objs
 OBJS = $(SRCS:.c=.o)
-OBJECTS = $(patsubst %.o, $(OBJ_DIR)/%.o,$(OBJS))
 
 all : $(NAME)
 
-$(NAME) : $(OBJECTS)
-		$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
+$(NAME) : $(OBJS)
+		$(AR) $(ARFLAGS) $@ $^
 
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
+%.o : $(SRC_DIR)/%.c
 		$(CC) $(CFLAGS) -o $@ -c $<
 
 clean :
-		rm -f $(OBJECTS)
+		$(RM) $(OBJS)
 
 fclean : clean
-		rm -f $(NAME)
+		$(RM) $(NAME)
 
 re : fclean all
 

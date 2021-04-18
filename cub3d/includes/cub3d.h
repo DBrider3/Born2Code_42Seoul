@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 18:06:04 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/16 15:04:44 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/18 14:27:34 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <errno.h>
 #include <string.h>
 
-typedef struct		s_identifier
+typedef struct		s_options
 {
 	unsigned int	r[2];
 	char			*no;
@@ -29,7 +29,10 @@ typedef struct		s_identifier
 	char			*s;
 	unsigned int	f[3];
 	unsigned int	c[3];
-}					t_identifier;
+	char			**map;
+}					t_options;
+
+void				parsing(int fd, t_options *op);
 
 
 #endif

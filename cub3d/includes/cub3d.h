@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 18:06:04 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/20 17:59:02 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/22 17:22:37 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_options
 }					t_options;
 
 void				parse_main(int fd, t_options *op);
+// void				parse_main(int fd);
 
 
 #endif

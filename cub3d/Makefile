@@ -6,13 +6,13 @@
 #    By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 18:06:38 by dcho              #+#    #+#              #
-#    Updated: 2021/04/16 18:02:58 by dcho             ###   ########.fr        #
+#    Updated: 2021/04/22 17:24:01 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I ./includes -I ./libft
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -I ./includes -I ./libft
 
 LDFLAGS = -L . -L $(LIBMLX_DIR) -L $(LIBFT_DIR)
 
@@ -22,7 +22,9 @@ NAME = cub3D
 
 SRC =	main.c						\
 		gnl/get_next_line.c			\
-		gnl/get_next_line_utils.c
+		gnl/get_next_line_utils.c	\
+		parser.c
+
 
 SRC_DIR = ./srcs/
 SRCS = $(addprefix $(SRC_DIR),$(SRC))

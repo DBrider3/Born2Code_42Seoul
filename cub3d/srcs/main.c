@@ -6,23 +6,21 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 18:12:15 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/18 14:24:32 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/20 19:19:56 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "cub3d.h"
-#include "get_next_line.h"
-#include "libft.h"
 
-int		main(void)
+int		main(int argc, char *argv[])
 {
 	// void	*mlx;
 	// void	*win;
 	t_options	op;
 	int			fd;
 
-	if ((fd = open("map.cub", O_RDONLY)) == -1)
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
 	{
 		perror("Error\n");
 		return (-1);

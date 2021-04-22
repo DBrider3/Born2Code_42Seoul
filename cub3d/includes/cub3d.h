@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 18:06:04 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/19 20:50:20 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/20 17:59:02 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
+
+#define ERROR -1;
 
 typedef struct		s_options
 {

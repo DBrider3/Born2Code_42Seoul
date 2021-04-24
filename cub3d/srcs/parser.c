@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 22:12:38 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 02:54:37 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/25 03:01:22 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,12 +127,13 @@ int		parse_main(int fd, t_options *op)
 			i = 0;
 			while (*(line + i))
 			{
-				if (*(line + i) == '1')
+				if (*(line + i++) == '1')
+				{
+					add_map_line(op->map, ft_strdup(line));
 					flag = 1;
-				i++;
+					break ;
+				}
 			}
-			if (flag == 1)
-				add_map_line(op->map, ft_strdup(line));
 		}
 		else
 			add_map_line(op->map, ft_strdup(line));

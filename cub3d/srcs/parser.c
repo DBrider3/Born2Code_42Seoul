@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 22:12:38 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/22 17:47:14 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/25 02:54:37 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@ static int		input_r(char **input, t_options *op)
 {
 	int		i;
 
-	i = 0;
-	if (sizeof(input) / sizeof(int) != 2)
+	if (check_size(input) != 2)
 		return (-1);
+	i = 0;
 	while (i < 2)
 	{
 		op->r[i] = ft_atoi(*(input + i));
-		// if (op->r[i] < 0 || op->r[i] > 255)
-		// 	return (-1);
 		i++;
 	}
 	return (1);
@@ -33,10 +31,8 @@ static int		input_r(char **input, t_options *op)
 
 static int		input_file(char **input, t_options *op, int flag)
 {
-	printf("%lu\n", sizeof(input));
-	// if (sizeof(input) / sizeof(int) != 1)
-	// 	return (-1);
-	printf("%s\n", *input);
+	if (check_size(input) != 1)
+		return (-1);
 	if (flag == 1)
 		op->no = ft_strdup(*input);
 	else if (flag == 2)
@@ -56,7 +52,7 @@ static int		input_fc(char **input, t_options *op, char flag)
 	int		i;
 
 
-	if (sizeof(input) / sizeof(int) == 1)
+	if (check_size(input) != 1)
 		return (-1);
 	comma = ft_split(*input, ',');
 	i = 0;
@@ -82,50 +78,65 @@ static int		input_fc(char **input, t_options *op, char flag)
 	free(comma);
 	return (0);
 }
-static int		parse_indentifier(char *line, t_options *op)
+
+static int		parse_identifier(char *line, t_options *op)
 {
 	char	**input;
-	char	*flag;
 
 	input  = ft_split(line, ' ');
-	flag = *input;
-	input++;
-	if (flag == 0)
+	if (input[0] == 0)
 		return (-1);
-	if (ft_strncmp(flag, "R", 1) == 0)
-		input_r(input, op);
-	else if (ft_strncmp(flag, "NO", 2) == 0)
-		input_file(input, op, 1);
-	else if (ft_strncmp(flag, "SO", 2) == 0)
-		input_file(input, op, 2);
-	else if (ft_strncmp(flag, "WE", 2) == 0)
-		input_file(input, op, 3);
-	else if (ft_strncmp(flag, "EA", 2) == 0)
-		input_file(input, op, 4);
-	else if (ft_strncmp(flag, "S", 1) == 0)
-		input_file(input, op, 5);
-	else if (ft_strncmp(flag, "F", 1) == 0)
-		input_fc(input, op, 'f');
-	else if (ft_strncmp(flag, "C", 1) == 0)
-		input_fc(input, op, 'c');
+	if (ft_strncmp(input[0], "R", 1) == 0)
+		input_r(&input[1], op);
+	else if (ft_strncmp(input[0], "NO", 2) == 0)
+		input_file(&input[1], op, 1);
+	else if (ft_strncmp(input[0], "SO", 2) == 0)
+		input_file(&input[1], op, 2);
+	else if (ft_strncmp(input[0], "WE", 2) == 0)
+		input_file(&input[1], op, 3);
+	else if (ft_strncmp(input[0], "EA", 2) == 0)
+		input_file(&input[1], op, 4);
+	else if (ft_strncmp(input[0], "S", 1) == 0)
+		input_file(&input[1], op, 5);
+	else if (ft_strncmp(input[0], "F", 1) == 0)
+		input_fc(&input[1], op, 'f');
+	else if (ft_strncmp(input[0], "C", 1) == 0)
+		input_fc(&input[1], op, 'c');
 	else
 		return (0);
-	// free(input);
+	free_input(input);
 	return (1);
 }
 
-
-void	parse_main(int fd, t_options *op)
-// void	parse_main(int fd)
+int		parse_main(int fd, t_options *op)
 {
 	char	*line;
 	int		ret;
-	// char 	*flag;
+	int		i;
+	int		flag;
 
+	init_identifier(op);
+	new_map(&op->map);
+	flag = 0;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		// printf("[%s]\n", line);
-		parse_indentifier(line, op);
+		if (check_identifier(*op) == 0)
+			parse_identifier(line, op);
+		else if (flag == 0)
+		{
+			i = 0;
+			while (*(line + i))
+			{
+				if (*(line + i) == '1')
+					flag = 1;
+				i++;
+			}
+			if (flag == 1)
+				add_map_line(op->map, ft_strdup(line));
+		}
+		else
+			add_map_line(op->map, ft_strdup(line));
 		free(line);
 	}
+	return (1);
 }

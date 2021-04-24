@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 18:06:04 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/22 17:22:37 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/25 02:35:51 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,20 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <errno.h>
 #include <string.h>
 
-#define ERROR -1;
+#define ERROR -1
+#define NO_ERROR 0
+#define INITAIL_SIZE 8
+
+typedef struct		s_map
+{
+	char	**map;
+	int		index;
+	int		size;
+}					t_map;
 
 typedef struct		s_options
 {
@@ -29,13 +39,20 @@ typedef struct		s_options
 	char			*we;
 	char			*ea;
 	char			*s;
-	unsigned int	f[3];
-	unsigned int	c[3];
-	char			**map;
+	int				f[3];
+	int				c[3];
+	t_map			*map;
 }					t_options;
 
-void				parse_main(int fd, t_options *op);
-// void				parse_main(int fd);
-
+int					parse_main(int fd, t_options *op);
+void				init_identifier(t_options *op);
+int					check_size(char **input);
+void				free_input(char **input);
+int					check_identifier(t_options op);
+int					new_map(t_map **m);
+int		expand_map(t_map *m);
+int		add_map_line(t_map *m, char *line);
+void		del_map(t_map *m);
+// int					parse_map_main(char *line, t_options *op, int index);
 
 #endif

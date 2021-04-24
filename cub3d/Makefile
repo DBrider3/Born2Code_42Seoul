@@ -6,7 +6,7 @@
 #    By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 18:06:38 by dcho              #+#    #+#              #
-#    Updated: 2021/04/22 17:24:01 by dcho             ###   ########.fr        #
+#    Updated: 2021/04/25 02:32:59 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ NAME = cub3D
 SRC =	main.c						\
 		gnl/get_next_line.c			\
 		gnl/get_next_line_utils.c	\
-		parser.c
+		init.c						\
+		parser.c					\
+		parser_utils.c				\
+		parser_map.c
+
 
 
 SRC_DIR = ./srcs/

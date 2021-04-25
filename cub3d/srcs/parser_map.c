@@ -6,14 +6,14 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 22:35:39 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 18:58:48 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/25 19:19:36 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "cub3d.h"
 
-int				new_map(t_map **m, int size)
+int				new_map(t_map **m)
 {
 	if (!(*m = malloc(sizeof(t_map))))
 		return (ERROR);
@@ -27,23 +27,23 @@ int				new_map(t_map **m, int size)
 
 static int		expand_map(t_map *m)
 {
-	char	**tmp;
+	char	**map;
 	int		i;
 
-	tmp = m->map;
+	map = m->map;
 	m->size *= 2;
 	if (!(m->map = malloc(sizeof(char*) * m->size)))
 	{
-		free(tmp);
+		free(map);
 		return (ERROR);
 	}
 	i = 0;
 	while (i < m->index)
 	{
-		m->map[i] = tmp[i];
+		m->map[i] = map[i];
 		i++;
 	}
-	free(tmp);
+	free(map);
 	return (NO_ERROR);
 }
 
@@ -81,7 +81,7 @@ int				find_map(char *line, int *flag, t_options *op)
 	{
 		if (*(line + i++) == '1')
 		{
-			if (add_map_line(op->tmp, ft_strdup(line)))
+			if (add_map_line(op->map, ft_strdup(line)))
 				return (ERROR);
 			*flag = 1;
 			break ;

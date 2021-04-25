@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 18:12:15 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 19:00:40 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/25 19:33:50 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,11 @@ int		main(int argc, char *argv[])
 		printf("%s\n", op.map->map[i]);
 		i++;
 	}
+
 	// if (op.map->map[1])
 	// 	printf("1\n");
 	printf("[%d]\n",map_validation(op.map));
-	// printf("[%d]\n", op.map->map[0][33]);
+	// printf("[%c]\n", op.map->map[0][32]);
 	del_map(op.map);
 	// if ((start = mlx_init()) == NULL);
 	// if ((windows = mlx_new_window(start, 900, 900, "Test")) == NULL);

@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 22:12:38 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 18:56:09 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/25 19:19:04 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int				parse_main(int fd, t_options *op)
 	int		flag;
 
 	init_identifier(op);
-	if (new_map(&op->tmp))
+	if (new_map(&op->map))
 		return (ERROR);
 	flag = 0;
 	while ((ret = get_next_line(fd, &line)) > 0)
@@ -37,7 +37,7 @@ int				parse_main(int fd, t_options *op)
 		}
 		else
 		{
-			if (add_map_line(op->tmp, ft_strdup(line)))
+			if (add_map_line(op->map, ft_strdup(line)))
 				return (free_value(line) + ERROR);
 		}
 		free(line);

@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:06:16 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 18:50:49 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/25 19:33:19 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,25 @@ int				map_validation(t_map *m)
 				return (ERROR);
 			if (m->map[i][j] != '1' && m->map[i][j] != ' ')
 			{
-				if (i - 1 < 0 || )
-				if (!(m->map[i - 1][j]) || !(m->map[i + 1][j])
-				|| !(m->map[i][j - 1]) || !(m->map[i][j + 1]))
+				int x;
+				x = ft_strlen(m->map[i]);
+				// 배열에 접근을 해도 세그
+				if (j >= x - 1 || j > 0 || i >= m->index - 1 || i > 0)
 					return (ERROR);
+
+				// x[33] = ' ' x[32] - 1 = '1'
+				// 유효성 검사
 				if (ft_strchr(FLAG, m->map[i - 1][j]) == 0 ||
 				ft_strchr(FLAG, m->map[i + 1][j]) == 0 ||
 				ft_strchr(FLAG, m->map[i][j - 1]) == 0 ||
 				ft_strchr(FLAG, m->map[i][j + 1]) == 0)
 					return (2);
+
+				// if (i - 1 < 0 || )
+				// if (!(m->map[i - 1][j]) || !(m->map[i + 1][j])
+				// || !(m->map[i][j - 1]) || !(m->map[i][j + 1]))
+				// 	return (ERROR);
+
 			}
 			j++;
 		}

@@ -6,7 +6,7 @@
 #    By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 18:06:38 by dcho              #+#    #+#              #
-#    Updated: 2021/04/25 02:32:59 by dcho             ###   ########.fr        #
+#    Updated: 2021/04/25 17:26:50 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,9 @@ SRC =	main.c						\
 		init.c						\
 		parser.c					\
 		parser_utils.c				\
-		parser_map.c
-
+		parser_identifier.c			\
+		parser_map.c				\
+		map_validation.c
 
 
 SRC_DIR = ./srcs/

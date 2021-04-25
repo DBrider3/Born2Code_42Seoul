@@ -6,13 +6,14 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 18:12:15 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 02:54:26 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/25 19:00:40 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "cub3d.h"
 #include "get_next_line.h"
+
 
 int		main(int argc, char *argv[])
 {
@@ -33,12 +34,7 @@ int		main(int argc, char *argv[])
 		perror("Error\n");
 		return (-1);
 	}
-	// while ((ret = get_next_line(fd, &line)) > 0)
-	// {
-	// 	printf("[%s]\n", line);
-	// 	free(line);
-	// }
-	if (parse_main(fd, &op) == -1)
+	if (parse_main(fd, &op) == ERROR)
 	{
 		printf("Error\n: not the correct parsing\n");
 		return (-1);
@@ -59,6 +55,10 @@ int		main(int argc, char *argv[])
 		printf("%s\n", op.map->map[i]);
 		i++;
 	}
+	// if (op.map->map[1])
+	// 	printf("1\n");
+	printf("[%d]\n",map_validation(op.map));
+	// printf("[%d]\n", op.map->map[0][33]);
 	del_map(op.map);
 	// if ((start = mlx_init()) == NULL);
 	// if ((windows = mlx_new_window(start, 900, 900, "Test")) == NULL);

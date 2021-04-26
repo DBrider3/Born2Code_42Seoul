@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 18:06:04 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 19:00:43 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/26 16:48:48 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ int					new_map(t_map **m);
 int					add_map_line(t_map *m, char *line);
 void				del_map(t_map *m);
 int					find_map(char *line, int *flag, t_options *op);
-int					map_validation(t_map *m);
+int					map_check_main(t_map *m);
 
 #endif

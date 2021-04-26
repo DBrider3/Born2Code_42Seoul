@@ -6,14 +6,13 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 18:12:15 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 19:33:50 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/26 17:48:24 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "cub3d.h"
 #include "get_next_line.h"
-
 
 int		main(int argc, char *argv[])
 {
@@ -53,12 +52,15 @@ int		main(int argc, char *argv[])
 	while (i < op.map->index)
 	{
 		printf("%s\n", op.map->map[i]);
+		// if (ft_strlen(op.map->map[i]) == 0)
+		// 	perror("Error\n");
+		// printf("len: %zu\n", ft_strlen(op.map->map[i]));
 		i++;
 	}
 
 	// if (op.map->map[1])
 	// 	printf("1\n");
-	printf("[%d]\n",map_validation(op.map));
+	printf("[%d]\n",map_check_main(op.map));
 	// printf("[%c]\n", op.map->map[0][32]);
 	del_map(op.map);
 	// if ((start = mlx_init()) == NULL);
@@ -67,6 +69,16 @@ int		main(int argc, char *argv[])
 	// mlx = mlx_init();
 	// win = mlx_new_window(mlx, 900, 900, "Test");
 	// mlx_loop(mlx);
+	free(op.no);
+	free(op.so);
+	free(op.we);
+	free(op.ea);
+	free(op.s);
+	close(fd);
+	while (1)
+	{
+
+	}
 	return (0);
 }
 

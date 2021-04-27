@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 16:27:52 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/25 16:39:19 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/27 18:17:18 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,11 @@ int					input_fc(char **input, int *op)
 	{
 		*op = ft_atoi(comma[i]);
 		if (*op < 0 || *op > 255)
-		{
-			free_inside(comma);
-			return (ERROR);
-		}
+			return (free_inside(comma) + ERROR);
 		op++;
 		i++;
 	}
-	free_inside(comma);
-	return (NO_ERROR);
+	return (free_inside(comma) + NO_ERROR);
 }
 
 int					parse_identifier(char *line, t_options *op)
@@ -102,11 +98,7 @@ int					parse_identifier(char *line, t_options *op)
 
 	input = ft_split(line, ' ');
 	if (input[0] == 0)
-	{
-		free_inside(input);
-		return (NO_ERROR);
-	}
+		return (free_inside(input) + NO_ERROR);
 	res = separate_identifier(op, input);
-	free_inside(input);
-	return (res);
+	return (free_inside(input) + res);
 }

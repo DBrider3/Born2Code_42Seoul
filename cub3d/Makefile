@@ -6,7 +6,7 @@
 #    By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 18:06:38 by dcho              #+#    #+#              #
-#    Updated: 2021/04/26 17:33:38 by dcho             ###   ########.fr        #
+#    Updated: 2021/04/27 22:24:58 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(NAME) : $(OBJS)
 		cp $(LIBMLX_DIR)/$(LIBMLX) .
 		$(CC) $(CFLAGS) $^ \
 		$(LDFLAGS) -lft -lmlx\
-		-framework OpenGL -framework AppKit\
+		-framework OpenGL -framework AppKit -lz\
 		-o $@
 
 

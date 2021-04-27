@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 20:12:12 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/26 17:40:34 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/27 18:17:08 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			check_size(char **input)
 	return (len);
 }
 
-void		free_inside(char **ptr)
+int			free_inside(char **ptr)
 {
 	int		i;
 
@@ -30,6 +30,7 @@ void		free_inside(char **ptr)
 	while (ptr[i])
 		free(ptr[i++]);
 	free(ptr);
+	return (0);
 }
 
 int			free_value(void *ptr)

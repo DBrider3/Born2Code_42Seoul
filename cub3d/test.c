@@ -1,111 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "mlx.h"
 
-int			c_cnt(char const *s, char c)
+#define ERROR -1
+
+typedef struct  s_vars {
+    void        *mlx;
+    void        *win;
+}               t_vars;
+
+int             close(int keycode, t_vars *vars)// 이벤트 발생시 call될 함수
 {
-	int		cnt;
-	int		i;
-
-	i = 0;
-	cnt = 0;
-	while (*(s + i))
-	{
-		if (*(s + i) == c)
-		{
-			while (*(s + i) == c)
-				i++;
-		}
-		else
-		{
-			if (i == 0)
-			{
-				if (*(s + i) != c)
-					cnt++;
-			}
-			else if (*(s + i - 1) == c && *(s + i) != 0)
-				cnt++;
-			i++;
-		}
-	}
-	return (cnt);
+    mlx_destroy_window(vars->mlx, vars->win);//창을 닫는다.
+	return 0;
 }
 
-char const	*input_table(char const *s, char c, char **res)
+int             main(void)
 {
-	char	*end;
-	int		len;
-	int		i;
+    t_vars      vars;
 
-	while (1)
-	{
-		if (*s == c)
-			s++;
-		else
-			break ;
-	}
-	end = strchr(s, c);
-	if (end == 0)
-		end = strchr(s, 0);
-	len = end - s + 1;
-	if (!(*res = malloc(sizeof(char) * len)))
-		return (NULL);
-	i = 0;
-	while (i < len - 1)
-		(*res)[i++] = *s++;
-	(*res)[i] = 0;
-	s++;
-	return (s);
-}
-
-char		**ft_split(char const *s, char c)
-{
-	int		cnt;
-	char	**res;
-	int		i;
-	int		j;
-
-	cnt = c_cnt(s, c);
-	if (!(res = malloc(sizeof(char*) * (cnt + 1))))
-		return (NULL);
-	i = 0;
-	while (i < cnt)
-	{
-		if ((s = input_table(s, c, &res[i++])) == NULL)
-		{
-			j = 0;
-			while (j < i)
-				free(res[j++]);
-			free(res);
-			return (NULL);
-		}
-	}
-	res[i] = NULL;
-	i = 0;
-	return (res);
-}
-
-
-void		free_inside(char **ptr)
-{
-	int		i;
-
-	i = 0;
-	while (ptr[i])
-		free(ptr[i++]);
-	free(ptr);
-}
-int main(void)
-{
-    char    **input;
-    char    *line = "123 456 789";
-
-	input = ft_split(line, ' ');
-    free_inside(input);
-
-    while (1)
-    {
-
-    }
-    return (0);
+    vars.mlx = mlx_init();
+    vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+    mlx_key_hook(vars.win, close, &vars);// 생성된 창에서 key입력 이벤트가 발생 시 close 함수를 실행한다.
+    mlx_loop(vars.mlx);
 }

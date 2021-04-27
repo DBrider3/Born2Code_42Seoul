@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 18:12:15 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/26 17:48:24 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/27 20:38:49 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ int		main(int argc, char *argv[])
 	// void	*win;
 	t_options	op;
 	int			fd;
-	// char	*line;
-	// int		ret;
 
 	if (argc != 2)
 	{
 		printf("Error\n: argument number is not appropriate");
 		return (-1);
+	}
+	else if (argc == 3)
+	{
+		fd = open(argv[1], O_)
 	}
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 	{
@@ -38,7 +40,6 @@ int		main(int argc, char *argv[])
 		printf("Error\n: not the correct parsing\n");
 		return (-1);
 	}
-
 	printf("R: %d %d\n",op.r[0], op.r[1]);
 	printf("NO: %s\n",op.no);
 	printf("SO: %s\n",op.so);
@@ -52,19 +53,12 @@ int		main(int argc, char *argv[])
 	while (i < op.map->index)
 	{
 		printf("%s\n", op.map->map[i]);
-		// if (ft_strlen(op.map->map[i]) == 0)
-		// 	perror("Error\n");
-		// printf("len: %zu\n", ft_strlen(op.map->map[i]));
 		i++;
 	}
-
-	// if (op.map->map[1])
-	// 	printf("1\n");
 	printf("[%d]\n",map_check_main(op.map));
-	// printf("[%c]\n", op.map->map[0][32]);
 	del_map(op.map);
-	// if ((start = mlx_init()) == NULL);
-	// if ((windows = mlx_new_window(start, 900, 900, "Test")) == NULL);
+	// if ((mlx = mlx_init()) == NULL);
+	// if ((win = mlx_new_window(start, 900, 900, "Test")) == NULL);
 	// printf("%s\n",strerror(errno));
 	// mlx = mlx_init();
 	// win = mlx_new_window(mlx, 900, 900, "Test");

@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 18:06:04 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/26 16:48:48 by dcho             ###   ########.fr       */
+/*   Updated: 2021/04/27 18:19:27 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int					input_fc(char **input, int *op);
 int					input_file(char **input, t_options *op, int flag);
 int					input_r(char **input, t_options *op);
 int					check_size(char **input);
-void				free_inside(char **input);
+int					free_inside(char **input);
 int			 		free_value(void *ptr);
 int					check_identifier(t_options op);
 int					new_map(t_map **m);

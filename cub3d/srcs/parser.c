@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 22:12:38 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/27 18:44:37 by dcho             ###   ########.fr       */
+/*   Updated: 2021/05/06 22:21:59 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 static int		parse_sub(t_options *op, char *line, int *flag)
 {
-	if (check_identifier(*op) == 0)
+	if (!(check_identifier(*op)))
 	{
 		if (parse_identifier(line, op))
 			return (free_value(line) + ERROR);
 	}
-	else if (flag == 0)
+	else if (*flag == 0)
 	{
 		if (find_map(line, flag, op))
 			return (free_value(line) + ERROR);

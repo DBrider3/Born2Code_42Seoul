@@ -1,16 +1,16 @@
-R -1 1080
+R 1920 1080 // screen size, -1 (-, 0 막아야 겠네)
 NO ./path_to_the_north_texture
 SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
+WE ./path_to_the_west_texture // 몇개 이상 들어오면 에러
 EA ./path_to_the_east_texture
 
-S ./path_to_the_sprite_texture
+S ./path_to_the_sprite_texture // open error
 
-F 200,100,100
+F 200,100,100 // 터지고
 C 220,100,2
 
 
-
+// 할거고
         1111111111111111111111111
         1000000000110000000000001
         1011000001110000000000001

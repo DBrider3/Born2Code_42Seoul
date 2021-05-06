@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 22:35:39 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/27 18:23:59 by dcho             ###   ########.fr       */
+/*   Updated: 2021/05/06 22:08:34 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void			del_map(t_map *m)
 	int		i;
 
 	i = 0;
-	while (i < m->size)
+	while (i < m->index)
 		free(m->map[i++]);
 	free(m->map);
 	free(m);

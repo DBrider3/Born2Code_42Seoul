@@ -6,7 +6,7 @@
 /*   By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 18:12:15 by dcho              #+#    #+#             */
-/*   Updated: 2021/04/27 20:38:49 by dcho             ###   ########.fr       */
+/*   Updated: 2021/05/06 21:45:40 by dcho             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int		main(int argc, char *argv[])
 		printf("Error\n: argument number is not appropriate");
 		return (-1);
 	}
-	else if (argc == 3)
-	{
-		fd = open(argv[1], O_)
-	}
+	// else if (argc == 3)
+	// {
+	// 	fd = open(argv[1], O_)
+	// }
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 	{
 		perror("Error\n");
@@ -69,10 +69,6 @@ int		main(int argc, char *argv[])
 	free(op.ea);
 	free(op.s);
 	close(fd);
-	while (1)
-	{
-
-	}
 	return (0);
 }
 

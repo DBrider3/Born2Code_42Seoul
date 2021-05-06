@@ -6,14 +6,14 @@
 #    By: dcho <dcho@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/14 18:06:38 by dcho              #+#    #+#              #
-#    Updated: 2021/04/27 22:24:58 by dcho             ###   ########.fr        #
+#    Updated: 2021/05/06 21:46:36 by dcho             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = gcc
-# CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -I ./includes -I ./libft
-CFLAGS = -Wall -Wextra -Werror -I ./includes -I ./libft
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -I ./includes -I ./libft
+# CFLAGS = -Wall -Wextra -Werror -I ./includes -I ./libft
 
 LDFLAGS = -L . -L $(LIBMLX_DIR) -L $(LIBFT_DIR)
 
